@@ -77,3 +77,13 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+
+const path = require('path');
+
+// Serve static files (CSS, JS, Images)
+app.use(express.static(path.join(__dirname)));
+
+// Route for homepage
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
